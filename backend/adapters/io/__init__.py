@@ -1,0 +1,1 @@
+from .InputLoader import cargar_entradas, cargar_entradas_desde_ruta

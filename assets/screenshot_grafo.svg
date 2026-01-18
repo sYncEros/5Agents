@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d47a1"/>
+      <stop offset="100%" stop-color="#1976d2"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <g>
+    <circle cx="250" cy="180" r="60" fill="#2e7d32"/>
+    <circle cx="520" cy="140" r="50" fill="#03a9f4"/>
+    <circle cx="820" cy="260" r="55" fill="#fbc02d"/>
+    <circle cx="420" cy="360" r="45" fill="#2e7d32"/>
+    <circle cx="690" cy="420" r="50" fill="#03a9f4"/>
+    <line x1="250" y1="180" x2="520" y2="140" stroke="#ffffff" stroke-opacity="0.8" stroke-width="4"/>
+    <line x1="520" y1="140" x2="820" y2="260" stroke="#ffffff" stroke-opacity="0.7" stroke-width="3"/>
+    <line x1="420" y1="360" x2="690" y2="420" stroke="#ffffff" stroke-opacity="0.6" stroke-width="3"/>
+    <line x1="420" y1="360" x2="250" y2="180" stroke="#ffffff" stroke-opacity="0.6" stroke-width="3"/>
+    <line x1="690" y1="420" x2="820" y2="260" stroke="#ffffff" stroke-opacity="0.6" stroke-width="3"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#ffffff">
+    <text x="40" y="60" font-size="36" font-weight="700">Grafo temático (placeholder)</text>
+    <text x="40" y="100" font-size="22" opacity="0.9">Coloca tu captura real en assets/screenshot_grafo.png si lo prefieres</text>
+    <g transform="translate(40, 600)">
+      <rect x="0" y="-24" width="360" height="30" rx="6" ry="6" fill="#000000" opacity="0.25"/>
+      <circle cx="16" cy="-9" r="6" fill="#2e7d32"/>
+      <text x="30" y="-4" font-size="18">Explícitos</text>
+      <circle cx="150" cy="-9" r="6" fill="#03a9f4"/>
+      <text x="164" y="-4" font-size="18">Implícitos</text>
+      <circle cx="280" cy="-9" r="6" fill="#fbc02d"/>
+      <text x="294" y="-4" font-size="18">Emergentes</text>
+    </g>
+  </g>
+</svg>
