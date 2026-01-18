@@ -1,0 +1,57 @@
+# Backend de Agentes IA - Dependencias
+# Servidor web y API
+Flask==2.3.3
+Flask-CORS==4.0.0
+Flask-SocketIO==5.3.6
+
+# UI Streamlit (demo app.py)
+streamlit==1.36.0
+streamlit-elements==0.1.0
+plotly==5.22.0
+
+# WebSocket y comunicación en tiempo real
+python-socketio==5.8.0
+eventlet==0.33.3
+
+# Utilidades
+python-dotenv==1.0.0
+uuid==1.30
+
+# Logging y debugging
+colorlog==6.7.0
+
+# Procesamiento de datos (opcional)
+pandas>=2.1.1
+numpy>=1.26.0
+
+# IA y ML (para agentes más avanzados)
+openai==0.28.1
+transformers>=4.33.2
+torch>=2.0.0
+crewai==0.51.1
+langchain-community>=0.4.1
+
+# Documentos
+pypdf==4.3.1
+python-docx==1.1.2
+
+# Base de datos (opcional)
+SQLAlchemy==2.0.21
+Flask-SQLAlchemy==3.0.5
+
+# Testing
+pytest==7.4.2
+pytest-asyncio==0.21.1
+
+# Validación de datos
+pydantic==2.3.0
+
+# Monitoreo y métricas
+psutil==5.9.5
+
+# Ollama Client
+requests==2.31.0
+httpx==0.24.1
+
+# AI Agents Orchestration
+crewai-agents==0.8.1

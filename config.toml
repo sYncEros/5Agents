@@ -1,0 +1,7 @@
+[server]
+maxUploadSize = 1024  # MB
+maxMessageSize = 2048 # MB
+enableXsrfProtection = true
+
+[client]
+showErrorDetails = true
