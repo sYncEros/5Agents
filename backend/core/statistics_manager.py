@@ -5,17 +5,16 @@ Registra: ideas procesadas, agentes activos, insights generados, resultados.
 """
 
 import json
-import os
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any
+from datetime import timedelta
 import logging
 
 logger = logging.getLogger(__name__)
 
 # Ruta del archivo de estadísticas
 STATS_FILE = Path(__file__).parent.parent.parent / "data" / "statistics.json"
-DATA_DIR = STATS_FILE.parent
 
 
 class StatisticsManager:
@@ -29,7 +28,7 @@ class StatisticsManager:
     
     def _ensure_data_dir(self):
         """Crea el directorio de datos si no existe."""
-        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        self.stats_file.parent.mkdir(parents=True, exist_ok=True)
     
     def _load_or_create_stats(self):
         """Carga estadísticas existentes o crea nuevas."""
@@ -99,14 +98,21 @@ class StatisticsManager:
         
         if not history:
             return 0
-        
-        cutoff_date = datetime.fromisoformat(
-            datetime.now().isoformat()
-        ).replace(day=datetime.now().day - days)
+
+        if days <= 0:
+            return 0
+
+        cutoff_date = datetime.now() - timedelta(days=days)
         
         recent_count = 0
         for entry in history:
-            entry_date = datetime.fromisoformat(entry.get("timestamp", ""))
+            ts = entry.get("timestamp")
+            if not ts:
+                continue
+            try:
+                entry_date = datetime.fromisoformat(ts)
+            except ValueError:
+                continue
             if entry_date >= cutoff_date:
                 recent_count += 1
         
@@ -125,8 +131,9 @@ class StatisticsManager:
         }
         
         self.data["processing_history"].append(record)
-        self.increment_ideas_processed()
-        self.increment_insights_generated(len(agent_responses))
+        # Evita escrituras redundantes: actualiza contadores y guarda una sola vez.
+        self.data["ideas_processed"] += 1
+        self.data["insights_generated"] += len(agent_responses)
         self.save()
         
         logger.info(f"Procesamiento registrado: {process_id}")

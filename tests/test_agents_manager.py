@@ -2,13 +2,13 @@
 
 import pytest
 from unittest.mock import Mock, patch, MagicMock
-from components.core.agents_manager import AgentsManager
+from backend.core.agents_manager import AgentsManager
 
 
 class TestAgentsManager:
     """Suite de tests para AgentsManager."""
     
-    @patch('components.core.agents_manager.Ollama')
+    @patch('backend.core.agents_manager.Ollama')
     def test_initialization(self, mock_ollama):
         """Verifica inicialización del gestor de agentes."""
         mock_llm_instance = Mock()
@@ -21,7 +21,7 @@ class TestAgentsManager:
         assert len(manager.agents_config) == 4
         mock_ollama.assert_called_once_with(model="test/model")
     
-    @patch('components.core.agents_manager.Ollama')
+    @patch('backend.core.agents_manager.Ollama')
     def test_agents_config_structure(self, mock_ollama):
         """Verifica que la configuración de agentes sea correcta."""
         mock_ollama.return_value = Mock()
@@ -45,7 +45,7 @@ class TestAgentsManager:
             assert len(config["goal"]) > 0
             assert len(config["backstory"]) > 0
     
-    @patch('components.core.agents_manager.Ollama')
+    @patch('backend.core.agents_manager.Ollama')
     def test_get_active_agents(self, mock_ollama):
         """Verifica obtención de agentes activos."""
         mock_ollama.return_value = Mock()
@@ -59,7 +59,7 @@ class TestAgentsManager:
         assert "🧠 Filósofo" in agents
         assert "💻 Técnico" in agents
     
-    @patch('components.core.agents_manager.Ollama')
+    @patch('backend.core.agents_manager.Ollama')
     def test_get_agents_count(self, mock_ollama):
         """Verifica conteo de agentes."""
         mock_ollama.return_value = Mock()
@@ -69,7 +69,7 @@ class TestAgentsManager:
         
         assert count == 4
     
-    @patch('components.core.agents_manager.Ollama')
+    @patch('backend.core.agents_manager.Ollama')
     def test_process_idea_empty_input_raises_error(self, mock_ollama):
         """Verifica que idea vacía lance error."""
         mock_ollama.return_value = Mock()
@@ -81,8 +81,8 @@ class TestAgentsManager:
         with pytest.raises(ValueError, match="La idea no puede estar vacía"):
             manager.process_idea("   ")
     
-    @patch('components.core.agents_manager.Crew')
-    @patch('components.core.agents_manager.Ollama')
+    @patch('backend.core.agents_manager.Crew')
+    @patch('backend.core.agents_manager.Ollama')
     def test_process_idea_success(self, mock_ollama, mock_crew_class):
         """Verifica procesamiento exitoso de una idea."""
         # Setup mocks
@@ -108,8 +108,8 @@ class TestAgentsManager:
             assert isinstance(results[agent_name], str)
             assert len(results[agent_name]) > 0
     
-    @patch('components.core.agents_manager.Crew')
-    @patch('components.core.agents_manager.Ollama')
+    @patch('backend.core.agents_manager.Crew')
+    @patch('backend.core.agents_manager.Ollama')
     def test_process_idea_with_error_handling(self, mock_ollama, mock_crew_class):
         """Verifica manejo de errores durante procesamiento."""
         mock_llm = Mock()
@@ -129,7 +129,7 @@ class TestAgentsManager:
         assert len(results) == 4
         assert all("Error" in response for response in results.values())
     
-    @patch('components.core.agents_manager.Ollama')
+    @patch('backend.core.agents_manager.Ollama')
     def test_create_agent(self, mock_ollama):
         """Verifica creación de agentes individuales."""
         mock_llm = Mock()
@@ -138,7 +138,7 @@ class TestAgentsManager:
         manager = AgentsManager()
         
         # Crear agente científico
-        with patch('components.core.agents_manager.Agent') as mock_agent_class:
+        with patch('backend.core.agents_manager.Agent') as mock_agent_class:
             mock_agent_instance = Mock()
             mock_agent_class.return_value = mock_agent_instance
             
@@ -150,7 +150,7 @@ class TestAgentsManager:
             assert call_kwargs["llm"] == mock_llm
             assert call_kwargs["allow_delegation"] == False
     
-    @patch('components.core.agents_manager.Ollama')
+    @patch('backend.core.agents_manager.Ollama')
     def test_create_analysis_task(self, mock_ollama):
         """Verifica creación de tareas de análisis."""
         mock_llm = Mock()
@@ -162,7 +162,7 @@ class TestAgentsManager:
         idea = "Test idea"
         agent_name = "🔬 Científico"
         
-        with patch('components.core.agents_manager.Task') as mock_task_class:
+        with patch('backend.core.agents_manager.Task') as mock_task_class:
             mock_task_instance = Mock()
             mock_task_class.return_value = mock_task_instance
             

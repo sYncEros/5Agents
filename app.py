@@ -246,7 +246,7 @@ def main():
         unsafe_allow_html=True,
     )
 
-    tab_lab, tab_motor = st.tabs(["Laboratorio (Idea Viva)", "Motor de Innovación"])
+    tab_lab, tab_motor = st.tabs(["Laboratorio de Ideas Vivas)", "Motor de Innovación"])
 
     with tab_lab:
         render_lab_ia()

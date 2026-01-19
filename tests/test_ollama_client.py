@@ -3,7 +3,7 @@ Tests para el cliente de Ollama.
 NO mockea la API - prueba la integración real con Ollama.
 """
 import pytest
-from components.llm.ollama_client import OllamaClient
+from backend.llm.ollama_client import OllamaClient
 
 
 class TestOllamaClient:
@@ -140,10 +140,11 @@ class TestOllamaClient:
         modelo = modelos[0]
         
         respuesta = client.generate(
-            prompt="¿Quién eres?",
+            prompt="¿Cuál es la capital de Francia?",   
             model=modelo,
-            system_prompt="Eres un poeta que solo responde en verso",
-            temperature=0.7
+            system_prompt="Eres un asistente muy preciso y conciso.",
+            temperature=0.2,
+            max_tokens=20
         )
         
         assert respuesta is not None
@@ -156,7 +157,7 @@ class TestOllamaIntegracionPerfiles:
     @pytest.mark.skipif(True, reason="Requiere Ollama en ejecución - ejecutar manualmente")
     def test_generar_con_perfil_cassandra(self):
         """Test generación usando perfil de Cassandra Quark."""
-        from components.llm.profiles import AGENT_PROFILES
+        from backend.llm.profiles import AGENT_PROFILES
         
         client = OllamaClient()
         
@@ -179,7 +180,7 @@ class TestOllamaIntegracionPerfiles:
     @pytest.mark.skipif(True, reason="Requiere Ollama en ejecución - ejecutar manualmente")
     def test_generar_con_perfil_valis(self):
         """Test generación usando perfil de Valis."""
-        from components.llm.profiles import AGENT_PROFILES
+        from backend.llm.profiles import AGENT_PROFILES
         
         client = OllamaClient()
         
@@ -202,7 +203,7 @@ class TestOllamaIntegracionPerfiles:
     @pytest.mark.skipif(True, reason="Requiere Ollama en ejecución - ejecutar manualmente")
     def test_generar_con_perfil_logos(self):
         """Test generación usando perfil de Logos."""
-        from components.llm.profiles import AGENT_PROFILES
+        from backend.llm.profiles import AGENT_PROFILES
         
         client = OllamaClient()
         

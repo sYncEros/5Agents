@@ -2,8 +2,8 @@
 Tests para el motor de síntesis.
 """
 import pytest
-from components.core.synthesis_engine import MotorSintesis, Sintesis
-from components.core.agent_activator import ContextoActivacion
+from backend.core.synthesis_engine import MotorSintesis, Sintesis
+from backend.core.agent_activator import ContextoActivacion
 
 
 class TestMotorSintesis:

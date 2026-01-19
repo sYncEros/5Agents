@@ -170,7 +170,7 @@ def main(argv=None):
         contexto = build_activation_context(analisis_inicial, niveles=niveles, guia_sistema=None)
     except Exception as e:
         print("[WARN] build_activation_context falló, construyendo contexto directo:", e)
-        from domain.analysis.ActivationContext import ActivationContext
+        from backend.domain.analysis.ActivationContext import ActivationContext
         planes = [p.value if hasattr(p, "value") else str(p) for p in analisis_inicial.get("planos_activos", [])]
         temas = [t.nombre if hasattr(t, "nombre") else str(t) for t in analisis_inicial.get("temas_explícitos", [])]
         contexto = ActivationContext(planes, temas, analisis_inicial.get("contradicciones_emergentes", []),

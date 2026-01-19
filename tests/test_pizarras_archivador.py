@@ -2,7 +2,7 @@
 Tests para PizarrasAgent y ArchivadorAgent.
 """
 import pytest
-from components.agents.profiles import (
+from backend.agents.profiles import (
     PizarrasAgent, 
     ArchivadorAgent,
     Pizarra,

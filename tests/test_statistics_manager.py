@@ -5,7 +5,7 @@ import json
 import tempfile
 from pathlib import Path
 from datetime import datetime
-from components.core.statistics_manager import StatisticsManager
+from backend.core.statistics_manager import StatisticsManager
 
 
 @pytest.fixture
@@ -25,7 +25,7 @@ class TestStatisticsManager:
     def test_initialization_creates_stats(self, temp_stats_file, monkeypatch):
         """Verifica que se inicialicen estadísticas nuevas."""
         monkeypatch.setattr(
-            'components.core.statistics_manager.STATS_FILE',
+            'backend.core.statistics_manager.STATS_FILE',
             temp_stats_file
         )
         manager = StatisticsManager()
@@ -37,7 +37,7 @@ class TestStatisticsManager:
     def test_increment_ideas_processed(self, temp_stats_file, monkeypatch):
         """Verifica incremento de ideas procesadas."""
         monkeypatch.setattr(
-            'components.core.statistics_manager.STATS_FILE',
+            'backend.core.statistics_manager.STATS_FILE',
             temp_stats_file
         )
         manager = StatisticsManager()
@@ -52,7 +52,7 @@ class TestStatisticsManager:
     def test_increment_insights_generated(self, temp_stats_file, monkeypatch):
         """Verifica incremento de insights generados."""
         monkeypatch.setattr(
-            'components.core.statistics_manager.STATS_FILE',
+            'backend.core.statistics_manager.STATS_FILE',
             temp_stats_file
         )
         manager = StatisticsManager()
@@ -66,7 +66,7 @@ class TestStatisticsManager:
     def test_record_processing(self, temp_stats_file, monkeypatch):
         """Verifica registro de procesamiento."""
         monkeypatch.setattr(
-            'components.core.statistics_manager.STATS_FILE',
+            'backend.core.statistics_manager.STATS_FILE',
             temp_stats_file
         )
         manager = StatisticsManager()
@@ -86,7 +86,7 @@ class TestStatisticsManager:
     def test_get_processing_history(self, temp_stats_file, monkeypatch):
         """Verifica obtención del histórico."""
         monkeypatch.setattr(
-            'components.core.statistics_manager.STATS_FILE',
+            'backend.core.statistics_manager.STATS_FILE',
             temp_stats_file
         )
         manager = StatisticsManager()
@@ -106,7 +106,7 @@ class TestStatisticsManager:
     def test_get_all_stats(self, temp_stats_file, monkeypatch):
         """Verifica obtención de todas las estadísticas."""
         monkeypatch.setattr(
-            'components.core.statistics_manager.STATS_FILE',
+            'backend.core.statistics_manager.STATS_FILE',
             temp_stats_file
         )
         manager = StatisticsManager()
@@ -124,7 +124,7 @@ class TestStatisticsManager:
     def test_persistence(self, temp_stats_file, monkeypatch):
         """Verifica que los datos persistan en archivo."""
         monkeypatch.setattr(
-            'components.core.statistics_manager.STATS_FILE',
+            'backend.core.statistics_manager.STATS_FILE',
             temp_stats_file
         )
         

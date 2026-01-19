@@ -4,11 +4,11 @@ Este módulo NO mockea la integración con Ollama. Si Ollama no está disponible
 """
 import pytest
 import time
-from components.core.conversation_controller import (
+from backend.core.conversation_controller import (
     ConversationController,
     ResultadoConversacion
 )
-from components.core.agent_activator import ContextoActivacion
+from backend.core.agent_activator import ContextoActivacion
 
 
 class TestConversationController:
@@ -108,7 +108,7 @@ class TestConversationController:
             complejidad=2
         )
         
-        from components.core.synthesis_engine import Sintesis
+        from backend.core.synthesis_engine import Sintesis
         sintesis = Sintesis(
             resumen="Test resumen",
             hipotesis_cruzadas=[],
@@ -148,7 +148,7 @@ class TestResultadoConversacion:
     
     def test_creacion_resultado_basico(self):
         """Test creación básica de ResultadoConversacion."""
-        from components.core.synthesis_engine import Sintesis
+        from backend.core.synthesis_engine import Sintesis
         
         contexto = ContextoActivacion(
             temas=["test"],
@@ -184,7 +184,7 @@ class TestResultadoConversacion:
     
     def test_to_dict_completo(self):
         """Test serialización completa a diccionario."""
-        from components.core.synthesis_engine import Sintesis
+        from backend.core.synthesis_engine import Sintesis
         
         contexto = ContextoActivacion(
             temas=["fisica_cuantica", "consciencia"],

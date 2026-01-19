@@ -2,7 +2,7 @@
 Tests mínimos para layer_detector (antes palimpsestos.py).
 """
 import pytest
-from components.core.layer_detector import analyze_text
+from backend.core.layer_detector import analyze_text
 
 
 class TestLayerDetector:

@@ -25,7 +25,7 @@ def pytest_configure(config):
 @pytest.fixture(scope="session")
 def ollama_disponible():
     """Fixture que verifica si Ollama está disponible."""
-    from components.llm.ollama_client import OllamaClient
+    from backend.llm.ollama_client import OllamaClient
     
     client = OllamaClient()
     return client.is_available()
@@ -52,7 +52,7 @@ def sample_input_filosofico():
 @pytest.fixture
 def sample_contexto():
     """Fixture con contexto de prueba."""
-    from components.core.agent_activator import ContextoActivacion
+    from backend.core.agent_activator import ContextoActivacion
     
     return ContextoActivacion(
         temas=["fisica_cuantica", "consciencia"],
